@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3 class="mb-4">Recruiter Dashboard</h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card text-center shadow">
+            <div class="card-body">
+                <h5>Total Jobs</h5>
+                <h2>{{ jobs.count }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card text-center shadow">
+            <div class="card-body">
+                <h5>Total Applications</h5>
+                <h2>{{ applications.count }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<h4>Applications</h4>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Job</th>
+        <th>Applicant</th>
+        <th>Status</th>
+    </tr>
+    {% for app in applications %}
+    <tr>
+        <td>{{ app.job.title }}</td>
+        <td>{{ app.applicant.username }}</td>
+        <td>{{ app.status }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
